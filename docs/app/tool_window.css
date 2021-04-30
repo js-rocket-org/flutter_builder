@@ -1,0 +1,343 @@
+@import "styles.css";
+
+#devPanel {
+	position: fixed;
+	left: 280px;
+	top: 42px;
+	right: 0;
+	bottom: 0;
+}
+
+#propertiesHeader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: normal;
+	font-size: 16px;
+	padding-top: 4px;
+	border-bottom: 1px #ccc dotted;
+	color: #777;
+}
+
+#propertiesPanel {
+	position: absolute;
+	right: 20px;
+	top: 40px;
+	width: 340px;
+	bottom: 40px;
+	background: #EFEFEF;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-top: 1px solid #ccc;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+	padding: 10px;
+	box-sizing: padding-box;
+}
+#devFooter {
+	padding-left: 24px;
+	padding-bottom: 8px;
+	position: fixed;
+	left: 280px;
+	right: 0;
+	bottom: 0;
+	height: 60px;
+	background: #fff;
+}
+
+#devFooter button {
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	height: 60px;
+	line-height: 60px;
+	vertical-align: middle;
+	font-size: 18px;
+	padding-left: 12px;
+	padding-right: 12px;
+	color: var(--lighter);
+	background: none;
+	font-weight: normal;
+	margin-right: 5px;
+}
+
+#devFooter button.active {
+	background: var(--bg);
+	color: var(--main);
+	font-weight: bold;
+	border-bottom-left-radius:6px;
+	border-bottom-right-radius:6px;
+}
+
+#devFooter button:hover {
+	background: var(--bg);
+	color: var(--main);
+	border-bottom-left-radius:6px;
+	border-bottom-right-radius:6px;
+}
+
+#stage {
+	background: none;
+	cursor: default;
+	position: absolute;
+	top: 40px;
+	left: 40px;
+}
+
+#stage:focus {
+	outline: none;
+}
+#deviceSelectDiv {
+	background-color: #fff;
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	margin-left: -340px;
+	width: 226px;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 2px;
+}
+#deviceSelectDiv:hover {
+	background-color: #ededed;
+}
+#debugDiv {
+	position: absolute;
+	left:0;
+	bottom:112px;
+}
+#scaleDiv {
+	position: absolute;
+	left:0;
+	bottom:82px;
+}
+.scaleLabel {
+	padding-top: 2px;
+	font-size: 12px;
+}
+#orientationDiv {
+	background: #fff;
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	margin-left:-112px;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	box-shadow: 1px 1px 1px rgba(32, 32, 32, .4);
+	font-size: 24px;
+	vertical-align: middle;
+	text-align: center;
+	color: #444;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+}
+#orientationDiv:hover {
+	background: #ededed;
+}
+#orientationDiv:active {
+	box-shadow: none;
+	transform: translateX(2px) translateY(2px);
+}
+#deviceInfoDiv {
+	background: #fff;
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	margin-left: -70px;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	box-shadow: 1px 1px 1px rgba(32, 32, 32, .4);
+	font-size: 32px;
+	vertical-align: middle;
+	text-align: center;
+	color: #444;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+}
+#deviceInfoDiv:hover {
+	background: #ededed;
+}
+#deviceInfoDiv:active {
+	box-shadow: none;
+	transform: translateX(2px) translateY(2px);
+}
+#sourcePanel {
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	background: #333;
+	padding: 10px;
+	margin: 30px 24px;
+	color: #fd2;
+}
+#yamlPanel {
+	padding:20px;
+}
+#pubspecPanel {
+	background: #333;
+	position: absolute;
+	padding: 20px;
+	top:30px; left:24px;right:24px;
+	bottom:30px;
+	color: #dd0;
+	overflow: auto;
+	font-size: 10pt;
+	font-family: 'Source Code Pro', Monospaced, monospace;
+}
+#testPanel {
+	padding:20px;
+}
+#testPanel input {
+	padding:14px;
+}
+#testPanel div {
+	background: rgba(255, 97, 97, .5);
+	display: block;
+	width:200px;
+	height:200px;
+	line-height: 200px;
+	border:1px solid var(--yellow);
+	vertical-align: middle;
+	text-align: center;
+	margin-top:20px;
+}
+.tabContent {
+	position: absolute;
+	top: 20px;
+	bottom: 60px;
+	left: 0;
+	right: 0;
+}
+
+#usersAdminWindow {
+	position: fixed;
+	top: 100px;
+	left: 100px;
+	width: 320px;
+	height: 240px;
+	background: #fff;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, .4);
+	border: 1px solid #dedede
+}
+
+#usersPanelHeader {
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: middle;
+	margin-bottom: 10px;
+	text-align: center;
+	background: #ededed;
+	color: var(--dkGray);
+	font-size: 12px;
+	font-weight: 200;
+}
+
+.userListRow {
+	margin-bottom: 8px;
+	padding: 0;
+	width: 100%;
+	height: 40px;
+}
+
+.userListRow span {
+	margin: 0;
+	display: inline-block;
+	width: 240px;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: top;
+	cursor: default;
+	font-weight: 100;
+	font-size: 14px;
+}
+
+.userListRow i {
+	font-size: 24px;
+	color: var(--dkGray);
+}
+
+.userListRow i:hover {
+	color: var(--main);
+}
+
+.userAvatar {
+	margin: 4px 8px;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	display: inline;
+}
+
+#inputDiv {
+	width: 260px;
+	display: inline-block;
+}
+
+#inputDiv input {
+	width: 240px;
+	margin-right: 5px;
+	padding: 6px;
+	font-size: 14px;
+	border-radius: 2px;
+	border: 1px solid #dedede;
+}
+
+#inputDiv input::placeholder {
+	font-size: 14px;
+}
+
+#userListArea {
+	overflow-y: auto;
+}
+#usersListEntry {
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+	right: 0;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 8px;
+	vertical-align: middle;
+}
+
+#usersListEntry i {
+	color: var(--dkGray);
+	font-size: 24px;
+	vertical-align: middle;
+}
+
+#usersListEntry i:hover {
+	color: var(--main);
+}
+
+#usersListFooter {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	line-height: 48px;
+	height: 48px;
+	border-top: 1px dotted #dedede;
+	float: right;
+	vertical-align: top;
+	padding: 6px 0 8px 0;
+}
+
+#closeUsersButton {
+	display: inline-block;
+	position: absolute;
+	height: 10px;
+	line-height: 10px;
+	right: 10px;
+	top: 6px;
+}
+

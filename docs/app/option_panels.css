@@ -1,0 +1,190 @@
+#optionsPanel {
+	position: fixed;
+	left: 60px;
+	width: 321px;
+	/*top: var(--optionsPanelTop);*/
+	top:0;
+	bottom: 80px;
+	background-color: #3B4147;
+	box-sizing: border-box;
+	box-shadow: 8px 8px 12px rgba(0, 0, 0, .6);
+}
+
+#optionsFooter {
+	position: fixed;
+	left: 60px;
+	width: 321px;
+	bottom: 40px;
+	height: 40px;
+	box-sizing: border-box;
+	box-shadow: 8px 8px 12px rgba(0, 0, 0, .6);
+	background-color: var(--main);
+}
+
+#optionsFooter button {
+	transition-duration: 150ms;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: middle;
+	font-size: 14px;
+	padding-left: 12px;
+	padding-right: 12px;
+	box-sizing: border-box;
+	color: rgba(255, 255, 255, .5);
+	background-color: var(--main);
+	font-family: Roboto, sans-serif;
+	font-weight: 100;
+}
+
+#optionsFooter button.active {
+	font-weight: 300;
+	border-bottom: 4px solid white;
+	color: #fff;
+}
+
+#optionsFooter button:hover {
+	color: white;
+	border-bottom: 4px solid white;
+}
+
+.optionTab {
+	position: absolute;
+	top: 40px;
+	padding-top: 8px;
+	bottom: 0;
+	left: 10px;
+	right: 10px;
+	background: none;
+	border: none;
+	text-align: center;
+}
+
+.containerOptionTab {
+	left: 0;
+	right: 0;
+	text-align: left;
+	padding: 0;
+	transition-duration: 250ms;
+}
+.left-switch {
+	position: relative;
+	left:20px;
+	width:40px;
+	top:10px;
+}
+.colorHeader {
+	position: absolute;
+	left:70px;
+	top:14px;
+	font-weight: 100;
+	font-size: 18px;
+}
+.centeredOptionPanel {
+	margin-top:20px;
+	text-align: center;
+}
+#rotatePicture {
+	background: #fff;
+	font-size: 100px;
+	width:120px;
+	height:120px;
+	color:var(--darker);
+	border:2px solid var(--dkGray);
+	margin:auto;
+}
+#colorDiv {
+	margin-top:44px;
+	height:100px;
+	margin-left:120px;
+}
+#containerAlignmentRow {
+	height:140px;
+}
+#containerAlignmentLabel {
+	position: absolute;
+	left:40px;
+	bottom:14px;
+	text-align: start;
+}
+#alignmentCanvas {
+	position: absolute;
+	top:20px;
+	left:134px;
+	border:1px solid var(--dkGray);
+}
+.containerRow {
+	position: relative;
+	padding-top: 4px;
+	padding-bottom: 10px;
+}
+.containerRowAlternate {
+	display: block;
+	top:0;left:0;bottom: 0;right:0;
+	margin:0;
+}
+.containerRowColored {
+	/*background: #D8E5E9;*/
+	border-top: 1px dotted var(--dkGray);
+	border-bottom: 1px dotted var(--gray);
+}
+#containerSizeRow {
+	height:40px;
+	padding-left: 140px;
+	padding-top: 12px;
+}
+#containerPaddingRow {
+	height:160px;
+}
+#paddingCanvas {
+	position:absolute;
+	left:140px;
+	top:52px;
+	border:1px solid var(--gray);
+	background: #fff;
+}
+#leftPaddingInput {
+	position: absolute;
+	left:54px;
+	top:80px;
+	width:80px;
+}
+#rightPaddingInput {
+	position: absolute;
+	left:226px;
+	top:80px;
+	width:80px;
+}
+#topPaddingInput {
+	position: absolute;
+	left:140px;
+	top:24px;
+	width:82px;
+}
+#bottomPaddingInput {
+	position: absolute;
+	left:140px;
+	top:136px;
+	width:82px;
+}
+.containerRow input{
+	width: 60px;
+	padding:6px;
+	border-radius: 3px;
+	margin-right:6px;
+	border:1px solid var(--gray);
+	text-align: center;
+	box-sizing: border-box;
+}
+.containerRow input:focus {
+	outline: none;
+	border:1px solid var(--main);
+}
+.centeredRow{
+	width:100%;
+	text-align: center;
+	margin:30px 0;
+}

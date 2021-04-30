@@ -1,0 +1,579 @@
+<!DOCTYPE html><html><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="scaffolded-by" content="https://github.com/google/stagehand">
+	<title>AppBuilder 2 20180529-19:35</title>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="style/materialdesignicons.css">
+	<link rel="stylesheet" href="style/ico-style2.css">
+	<link rel="stylesheet" href="codeformat.css">
+	<link rel="stylesheet" href="panels.css">
+	<link rel="stylesheet" href="option_panels.css">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="tool_window.css">
+	<link rel="shortcut icon" type="image/png" href="img/app_logo.png">
+
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+
+	<script defer="" src="main.dart.js"></script>
+	
+</head>
+
+<body>
+<div style="position: fixed; left:-1000px; top:-1000px;">
+	<div>
+		<span id="textElement">MHg</span>
+		<div id="testBlock" style="display: inline-block; width:1px; height: 0;"></div>
+	</div>
+	<span id="selectedIcon"></span>
+	<span style="font-family: 'Material Icons', sans-serif;"></span>
+</div>
+<div id="devPanel">
+	<div id="modelPanel" class="tabContent">
+		<div id="propertiesPanel">
+			<div id="propertiesHeader">component properties</div>
+
+			<div id="themePanel" class="optionTab">
+				<div class="colorRow">
+					<label for="darkCheckbox" class="colorName">Dark Theme</label>
+					<input type="checkbox" id="darkCheckbox" name="set-name" class="switch-input">
+					<label for="darkCheckbox" class="switch-label"><span class="toggle--on"></span><span class="toggle--off"></span></label>
+				</div>
+				<div class="colorRow">
+					<span class="colorName">Primary Swatch</span><span id="primarySwatchSquare" class="colorSquare"></span>
+				</div>
+				<div class="colorRow">
+					<span class="colorName">Primary Color</span><span id="primaryColorSquare" class="colorSquare"></span>
+				</div>
+				<div class="colorRow">
+					<span class="colorName">Accent Color</span><span id="accentColorSquare" class="colorSquare"></span>
+				</div>
+				<div class="colorRow">
+					<span class="colorName">Divider Color</span><span id="dividerColorSquare" class="colorSquare"></span>
+				</div>
+				<div class="colorRow">
+					<span class="colorName">Canvas Color</span><span id="canvasColorSquare" class="colorSquare"></span>
+				</div>
+				<div class="colorRow">
+					<span class="colorName">Background Color</span><span id="backgroundColorSquare" class="colorSquare"></span>
+				</div>
+				<div id="colorValueWindow"></div>
+				<div id="colorPickerWindow" class="colorPickerWindow"></div>
+				<div class="colorRow">
+					<span class="colorName">Font Family</span>
+					<span class=" themeFont themeSelectDiv">
+						<select id="themeFontSelect">
+							<option>Roboto</option>
+							<option>Merriweather</option>
+						</select>
+					</span>
+				</div>
+			</div>
+
+			<div id="logoPanel" class="optionTab" style="display: none">
+				<div id="flutterColorWindow" class="colorPickerWindow"></div>
+				<div class="colorRow">
+					<span class="colorName">Color</span>
+					<span id="logoColorSwatchSquare" class="colorSquare"></span>
+				</div>
+				<div class="sliderPanel">
+					<label for="logoSize" class="paddingLabel">Size</label>
+					<input id="logoSize" type="range" min="10" max="400" value="24" class="paddingSlider">
+					<label id="logoSizeLabel" class="paddingValueLabel">24</label>
+				</div>
+
+			</div>
+
+			<div id="imagePanel" class="optionTab" style="display: none">
+				<div class="selectDiv">
+					<select id="imageSourceSelect">
+						<option>network</option>
+						<option>asset</option>
+					</select>
+				</div>
+				<div id="imageSourceDiv">
+					<input id="imageURL" type="text" placeholder="image url">
+					<span id="loadUrlSpan" class="mdi mdi-cloud-download"></span>
+				</div>
+				<div id="imageInputDiv">
+					<input type="checkbox" id="imageSizeCheck" name="set-name" class="switch-input">
+					<label for="imageSizeCheck" class="switch-label left-switch"><span class="toggle--on"></span>
+						<span class="toggle--off"></span></label>
+					<label for="imageSizeCheck" class="colorHeader">Sized</label>
+					<input id="imageWidthInput" placeholder="width" type="number"> x
+					<input id="imageHeightInput" placeholder="height" type="number">
+				</div>
+				<div id="imageAlignmentPanel">
+					<canvas id="imageAlignmentCanvas" width="100" height="100"></canvas>
+					<div id="alignmentLabel">center</div>
+				</div>
+				<div id="imageFitPanel"></div>
+				<div id="imageFitLabel"><strong>Fit:</strong>contain</div>
+				<div id="imageErrorLabel"></div>
+			</div>
+
+			<div id="sizePanelEditor" class="optionTab" style="display: none">
+				<div id="sizePanel">
+					<label for="widthInput">Width</label>
+				<input type="number" id="widthInput" placeholder="Width">
+					<label for="heightInput">Height</label>
+				<input type="number" id="heightInput" placeholder="Height">
+				</div>
+			</div>
+			
+			<div id="fractionalSizePanelEditor" class="optionTab" style="display: none">
+				<div id="fractionalSizePanel">
+					<div class="sliderPanel">
+						<label class="paddingLabel" id="horizontalLabel" for="fWidthInput">Width Factor</label>
+						<input type="range" min="-1" max="1" step=".05" class="paddingSlider" id="fWidthInput" placeholder="Width">
+						<label id="fWidthLabel" class="paddingValueLabel">0.0</label>
+					</div>
+					<div class="sliderPanel">
+						<label class="paddingLabel" id="verticalLabel" for="fHeightInput">Height Factor</label>
+						<input type="range" min="-1" max="1" step=".05" class="paddingSlider" id="fHeightInput" placeholder="Height">
+						<label id="fHeightLabel" class="paddingValueLabel">0.0</label>
+					</div>
+				</div>
+			</div>
+			
+			<div id="paddingPanel" class="optionTab" style="display: none">
+				<div id="paddingSquare">
+					<div id="paddingSquareDisplay"></div>
+				</div>
+				<!--<div id="sizePanel">-->
+					<!--<input type="number" id="widthInput" placeholder="Width">-->
+					<!--<input type="number" id="heightInput" placeholder="Height">-->
+				<!--</div>-->
+				<div class="slidersPanel">
+					<div class="sliderPanel">
+						<label for="topPaddingRange" class="paddingLabel">Top</label>
+						<input id="topPaddingRange" type="range" class="paddingSlider" min="0" max="50">
+						<label id="topPaddingLabel" class="paddingValueLabel">00</label>
+					</div>
+					<div class="sliderPanel">
+						<label for="bottomPaddingRange" class="paddingLabel">Bottom</label>
+						<input id="bottomPaddingRange" type="range" class="paddingSlider" min="0" max="50">
+						<label id="bottomPaddingLabel" class="paddingValueLabel">00</label>
+					</div>
+					<div class="sliderPanel">
+						<label for="leftPaddingRange" class="paddingLabel">Left</label>
+						<input id="leftPaddingRange" type="range" class="paddingSlider" min="0" max="50">
+						<label id="leftPaddingLabel" class="paddingValueLabel">00</label>
+					</div>
+					<div class="sliderPanel">
+						<label for="rightPaddingRange" class="paddingLabel">Right</label>
+						<input id="rightPaddingRange" type="range" class="paddingSlider" min="0" max="50">
+						<label id="rightPaddingLabel" class="paddingValueLabel">00</label>
+					</div>
+				</div>
+				<div id="directionPanel">
+					<span id="directionDiv">horizontal</span>
+					<div id="arrowDiv">
+						<span id="directionArrow" class="mdi mdi-arrow-right-bold"></span>
+					</div>
+				</div>
+			</div>
+
+			<div id="opacityHelper" class="optionTab containerOptionTab" style="display: none">
+				<div class="centeredOptionPanel">
+					<input id="opacitySlider" type="range" min="0" max="100" class="paddingSlider">
+					<label for="opacitySlider" id="opacityLabel" class="paddingValueLabel">100</label>
+				</div>
+			</div>
+
+			<div id="rotateBoxHelper" class="optionTab containerOptionTab" style="display: none">
+				<div class="centeredOptionPanel">
+					<div id="rotatePicture" class="mdi mdi-emoticon"></div>
+					<input id="rotateSlider" type="range" min="1" max="4" step="1" class="paddingSlider">
+					<label for="rotateSlider" id="rotateLabel" class="paddingValueLabel">1</label>
+				</div>
+			</div>
+			<div id="emptyHelper" class="optionTab containerOptionTab" style="display: none;">
+				<div class="centeredRow">No Editable Properties</div>
+			</div>
+			<div id="containerHelper" class="optionTab containerOptionTab" style="display: none">
+				<div id="colorRow" class="containerRow">
+					<div id="colorRowColorTab" class="containerRowAlternate">
+						<input type="checkbox" id="colorCheckbox" name="set-name" class="switch-input">
+						<label for="colorCheckbox" class="switch-label left-switch"><span class="toggle--on"></span><span class="toggle--off"></span></label>
+						<label for="colorCheckbox" class="colorHeader">Color</label>
+						<div id="colorDiv"></div>
+					</div>
+					<div id="colorRowLinearGradientTab" class="containerRowAlternate" style="display: none">
+						<canvas id="gradientStopCanvas" width="250" height="32" contenteditable="true"></canvas>
+						<div id="gradientColorPanel"></div>
+						<div id="gradientStopPanel"></div>
+					</div>
+				</div>
+				<div id="containerAlignmentRow" class="containerRow containerRowColored">
+					<span class="colorHeader" style="left: 20px">Alignment</span>
+					<canvas id="alignmentCanvas" height="80" width="80"></canvas>
+					<span id="containerAlignmentLabel">topLeft</span>
+				</div>
+				<div id="containerSizeRow" class="containerRow">
+					<input type="checkbox" id="sizeCheck" name="set-name" class="switch-input">
+					<label for="sizeCheck" class="switch-label left-switch"><span class="toggle--on"></span>
+						<span class="toggle--off"></span></label>
+					<label for="sizeCheck" class="colorHeader">Sized</label>
+					<input type="text" placeholder="width" id="containerWidth" width="80px" title="enter a number or MAX" onfocus="this.select();">
+					<input type="text" min="1" placeholder="height" id="containerHeight" width="80px" title="enter a number or MAX" onfocus="this.select();">
+				</div>
+				<div id="containerPaddingRow" class="containerRow containerRowColored">
+					<span class="colorHeader" style="left: 20px">Padding</span>
+					<input type="number" placeholder="left" min="0" max="50" value="1" id="topPaddingInput">
+					<input type="number" placeholder="left" min="0" max="50" value="1" id="leftPaddingInput">
+					<input type="number" placeholder="left" min="0" max="50" value="1" id="rightPaddingInput">
+					<input type="number" placeholder="left" min="0" max="50" value="1" id="bottomPaddingInput">
+					<canvas id="paddingCanvas" width="80px" height="80px"></canvas>
+				</div>
+			</div>
+
+			<div id="iconHelper" class="optionTab" style="display: none">
+				<div id="iconColor"></div>
+				<div id="iconChoicePanel"></div>
+				<div class="sliderPanel">
+					<label for="iconSize" class="paddingLabel">Size</label>
+					<input id="iconSize" type="range" min="10" max="200" class="paddingSlider">
+					<label id="iconSizeLabel" class="paddingValueLabel">10</label>
+				</div>
+			</div>
+
+			<div id="bottomNavItemPanel" class="optionTab" style="display: none">
+				<div id="navItemIconPanel"></div>
+				<input type="text" id="navItemTitle" maxlength="20" placeholder="Title">
+			</div>
+			<div id="containerPanel" class="optionTab" style="display: none">
+				<div id="containerColor"></div>
+				<label for="mainAxisSelector" class="optionLabel optionRowOne">Main Axis Alignment</label>
+				<div class="selectDiv" style="top: 64px;">
+					<select id="mainAxisSelector">
+						<option>center</option>
+						<option>end</option>
+						<option>spaceAround</option>
+						<option>spaceBetween</option>
+						<option>spaceEvenly</option>
+						<option>start</option>
+					</select>
+				</div>
+				<label for="crossAxisSelector" class="optionLabel optionRowTwo">Cross Axis Alignment</label>
+				<div class="selectDiv" style="top: 142px;">
+					<select id="crossAxisSelector">
+						<option>baseline</option>
+						<option>center</option>
+						<option>end</option>
+						<option>start</option>
+						<option>stretch</option>
+					</select>
+				</div>
+				<label for="mainAxisSizeSelector" class="optionLabel optionRowThree">Main Axis Size</label>
+				<div class="selectDiv" style="top:222px">
+					<select id="mainAxisSizeSelector">
+						<option>max</option>
+						<option>min</option>
+					</select>
+				</div>
+			</div>
+			<div id="fontPanel" class="optionTab">
+				<input type="text" id="fontDisplay" value="The quick brown fox">
+				<div class="selectDiv" style="top: 64px;">
+					<select id="fontSelector">
+						<option>Merriweather</option>
+						<option>Roboto</option>
+					</select>
+				</div>
+				<div id="fontColor"></div>
+				<div id="fontSliders">
+					<div class="sliderPanel">
+						<label for="fontSize" class="paddingLabel">Size</label>
+						<input id="fontSize" type="range" class="paddingSlider">
+						<label id="fontSizeLabel" class="paddingValueLabel">010</label>
+					</div>
+					<div id="sliderPanel">
+						<label for="fontWeight" class="paddingLabel">Weight</label>
+						<input id="fontWeight" type="range" class="paddingSlider" min="100" max="900" step="100">
+						<label id="fontWeightLabel" class="paddingValueLabel">100</label>
+					</div>
+				</div>
+			</div>
+			<div id="colorsPanel" class="optionTab">
+				<div id="bgColor"></div>
+				<div id="borderRadiusDisplay"></div>
+				<div class="slidersPanel">
+					<label for="radiusRange" class="paddingLabel">Border Radius</label>
+					<input id="radiusRange" type="range" class="paddingSlider" min="0" max="100" value="0">
+					<label id="radiusLabel" class="paddingValueLabel">0</label>
+				</div>
+			</div>
+
+		</div>
+		<canvas id="stage" width="360" height="560" contenteditable="true"></canvas>
+		<div id="deviceSelectDiv" class="selectDiv">
+			<select id="deviceSelector">
+				<!--<option>iPad</option>-->
+				<!--<option>Nexus 9</option>-->
+				<!--<option>iPhone X</option>-->
+				<!--<option>Pixel 2 XL</option>-->
+			</select>
+		</div>
+		<div id="debugDiv">
+			<input type="checkbox" id="debugCheckBox" class="switch-input">
+			<label for="debugCheckBox" class="switch-label left-switch">
+				<span class="toggle--on"></span><span class="toggle--off"></span>
+			</label>
+			<label for="debugCheckBox" class="colorHeader scaleLabel">Debug</label>
+		</div>
+		<div id="scaleDiv">
+			<input type="checkbox" id="scaleCheckBox" name="set-name" class="switch-input" checked="">
+			<label for="scaleCheckBox" class="switch-label left-switch"><span class="toggle--on"></span>
+				<span class="toggle--off"></span></label>
+			<label for="scaleCheckBox" class="colorHeader scaleLabel">Scale</label>
+		</div>
+		<div id="orientationDiv" class="mdi mdi-phone-rotate-landscape"></div>
+		<div id="deviceInfoDiv" class="mdi mdi-information-outline" title="device info"></div>
+		<span id="resetButton" class="mdi mdi-autorenew fab" title="restart"></span>
+
+	</div>
+	<div id="sourcePanel" class="tabContent" style="display: none">
+		<div id="sourcePanelLines"></div>
+		<div id="sourcePanelText">source code</div>
+		<span id="clipboardButton" class="mdi mdi-clipboard fab" title="copy code to clipboard"></span>
+		      <!--onclick="showTab(event, 'sourcePanel', 'tabContent', 'devPanelButton');-->
+					<!--document.getElementById('sourceTab').classList.add('active');"-->
+
+	</div>
+	<div id="yamlPanel" class="tabContent" style="display:none;">
+		<div id="pubspecPanel"></div>
+		<span id="yamlButton" class="mdi mdi-clipboard leftBarButton fab" title="copy pubspec.yaml to the clipboard" )=""></span>
+		      <!--onclick="showTab(event, 'pubspecPanel', 'tabContent', 'devPanelButton');-->
+				<!--document.getElementById('pubspecTab').classList.add('active');"-->
+
+	</div>
+
+	<div id="devFooter">
+		<button class="devPanelButton active" onclick="showTab(event, 'modelPanel', 'tabContent', 'devPanelButton')">
+			<span class="mdi mdi-cellphone"></span>model
+		</button>
+		<button class="devPanelButton" id="sourceTab" onclick="showTab(event, 'sourcePanel', 'tabContent', 'devPanelButton')">
+			<span class="mdi mdi-code-braces"></span>source code
+		</button>
+		<button class="devPanelButton" id="pubspecTab" onclick="showTab(event, 'yamlPanel', 'tabContent', 'devPanelButton')">
+			<span class="mdi mdi-code-tags-check"></span>pubspec
+		</button>
+	</div>
+</div>
+<div id="toolPanel">
+	<div id="BasicWindow" class="toolWindow">
+	</div>
+	<div id="MaterialWindow" class="toolWindow" style="display: none"></div>
+	<div id="Material2Window" class="toolWindow" style="display: none"></div>
+	<div id="LayoutWindow" class="toolWindow" style="display: none"></div>
+	<div id="TextWindow" class="toolWindow" style="display:none;"></div>
+	<div id="AssetsWindow" class="toolWindow" style="display:none;"></div>
+	<div id="InputWindow" class="toolWindow" style="display:none;"></div>
+	<div id="StylingWindow" class="toolWindow" style="display:none;"></div>
+	<div id="EffectsWindow" class="toolWindow" style="display:none;"></div>
+	<div id="ScrollingWindow" class="toolWindow" style="display:none;"></div>
+</div>
+
+<div id="treePanel"></div>
+<div id="leftBar">
+	<!--<span class="mdi mdi-account-multiple leftBarButton" title="users" id="usersButton"></span>-->
+
+	<div id="leftBarMenu">
+		<span class="leftBarMenuSpan leftBarMenuSelected" id="basicChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Basic</span>
+		<span class="leftBarMenuSpan" id="materialChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Material</span>
+		<span class="leftBarMenuSpan" id="material2Choice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Material2</span>
+		<span class="leftBarMenuSpan" id="layoutChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Layout</span>
+		<span class="leftBarMenuSpan" id="textChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Text</span>
+		<span class="leftBarMenuSpan" id="assetsChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Assets</span>
+		<span class="leftBarMenuSpan" id="inputChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Input</span>
+		<span class="leftBarMenuSpan" id="stylingChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Styling</span>
+		<span class="leftBarMenuSpan" id="effectsChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Effects</span>
+		<span class="leftBarMenuSpan" id="scrollingChoice" onclick="showTab(event, this.innerText+'Window', 'toolWindow', '')">Scrolling</span>
+	</div>
+	<span id="treeSpan" class="mdi mdi-file-tree leftBarButton" title="Model" onclick="toggleTreeMenu();"></span>
+</div>
+<img src="img/tiny_logo.png" id="tiny_logo"><span id="logo_span">FLUTTER STUDIO</span>
+
+<div id="header">
+	<img src="img/small_logo.png" id="header_logo">
+	<!--<div id="projectSelector">-->
+		<!--<div id="project_name_area">-->
+			<!--<span id="project_name">Projects &#x25BE;</span>-->
+		<!--</div>-->
+		<!--<div id="menuContainer" class="projectMenu">-->
+			<!--<div id="newProjectButton">New Project</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div id="coEditorsPanel">-->
+		<!--<img src="img/exampleavatar.png">-->
+		<!--<img src="img/exampleAvatar2.jpg">-->
+		<!--<span id="addUserButton" class="mdi mdi-account-plus"></span>-->
+	<!--</div>-->
+	<!--<span class="mdi mdi-message-text" id="chatButton"></span>-->
+	<!--<span id="chatAlert"></span>-->
+	<!--<img id="userImage"-->
+	     <!--src="img/photo.jpg">-->
+	<!--<span id="loginSpan">sign in</span>-->
+	<!--<div id="userPanel" class="bubble" style="visibility: hidden">-->
+		<!--<img src="img/photo.jpg"-->
+		     <!--id="largeUserImage">-->
+		<!--<span id="userName">John Smith</span>-->
+		<!--<span id="emailAddress">email</span>-->
+		<!--<div id="bottomRow">-->
+			<!--<span id="logoutButton">Sign out</span>-->
+		<!--</div>-->
+	<!--</div>-->
+</div>
+
+<div id="usersAdminWindow" style="visibility: hidden">
+	<div id="usersPanelHeader"><span id="usersHeader">USERS</span></div>
+	<div id="userListArea">
+		<div class="userListRow"> <!-- owner row-->
+			<img class="userAvatar" src="img/photo.jpg" id="ownerImage"><span id="ownerRow">John Smith</span>
+		</div>
+		<!--<div class="userListRow">-->
+		<!--<img class="userAvatar" src="img/exampleavatar.png"><span>John Smith</span><i class="mdi mdi-delete"></i>-->
+		<!--</div>-->
+	</div>
+	<div id="usersListEntry">
+		<div id="inputDiv"><input type="text" placeholder="invite by email"></div>
+		<i class="mdi mdi-send"></i>
+	</div>
+	<div id="usersListFooter">
+		<span class="blueButton" id="closeUsersButton" onclick="toggleVisibility('usersAdminWindow')">DONE</span>
+	</div>
+</div>
+
+
+<div id="output">
+</div>
+<div style="display: none" id="images">
+	<img src="img/teapot.png" id="appImage">
+	<img src="img/app_logo.png" id="appLogoImage"></div>
+	<img id="clearPix" src="img/clear.png">
+
+
+
+<div id="iconWindow"></div>
+
+<div id="loginPanel"></div>
+
+<div id="messageDiv" class="fadeType">Messages</div>
+
+<div id="errorWindow">
+	<span id="errorIcon" class="mdi mdi-alert-outline"></span>
+	<span id="errorText">This is example error text<br>With extra lines</span>
+</div>
+
+<div id="deviceInfoWindow">
+	<div id="deviceWindowHeader">
+		<span id="deviceIcon" class="mdi mdi-desktop-classic"></span>
+		<span id="deviceName">Samsung Galaxy Mega s3</span>
+	</div>
+	<div class="deviceRow">
+		<span class="deviceLeft">Platform</span>
+		<span class="deviceRight mdi mdi-apple" id="platformSpan"></span>
+	</div>
+	<div class="deviceRow">
+		<span class="deviceLeft">Aspect Ratio</span>
+		<span id="aspectSpan" class="deviceRight">16:10</span>
+	</div>
+	<div class="deviceRow">
+		<span class="deviceLeft">Dimensions (dp)</span>
+		<span id="dimensionSpan" class="deviceRight">2500x1600</span>
+	</div>
+	<div class="deviceRow">
+		<span class="deviceLeft">Dimensions (px)</span>
+		<span id="dimensionPxSpan" class="deviceRight">2500x1600</span>
+	</div>
+	<div class="deviceRow">
+		<span class="deviceLeft">Density</span>
+		<span id="densitySpan" class="deviceRight">2.0 xxxhdpi</span>
+	</div>
+	<div id="deviceWindowClose" class="deviceFooter mdi mdi-chevron-double-up">
+	</div>
+</div>
+
+<div id="modalBG" class="modalDefault">
+	<div id="modal_dialog">
+		<div id="modal_header">New Project Name</div>
+		<div class="modal_info">
+			<input type="text" id="modal_name" maxlength="24" placeholder="Project Name">
+		</div>
+		<div class="modal_info">
+			<input type="text" id="modal_description" maxlength="50" placeholder="Project Description">
+		</div>
+		<div id="modal_footer">
+			<span id="modal_close">Ok</span><span id="modal_cancel">cancel</span>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	var compSelectors = document.getElementsByClassName('leftBarMenuSpan');
+	var oldSelection = document.getElementsByClassName('leftBarMenuSelected').item(0);
+	for (var k = 0; k < compSelectors.length; k++) {
+	    var selector = compSelectors.item(k);
+	    selector.addEventListener('click', function () {
+	        var target = event.currentTarget;
+	        if (oldSelection !== target) {
+	            target.classList.add('leftBarMenuSelected');
+	            oldSelection.classList.remove('leftBarMenuSelected');
+	            oldSelection = target;
+	        }
+        });
+	}
+
+
+    function toggleVisibility(name) {
+        var element = document.getElementById(name);
+        if (element.style.visibility === 'visible') {
+            element.style.visibility = 'hidden';
+        }
+        else {
+            element.style.visibility = 'visible';
+        }
+    }
+
+    var leftShowing = false;
+
+    function showTab(event, tabName, contentName, buttonClass) {
+        var tabContent = document.getElementsByClassName(contentName);
+        for (var k = 0; k < tabContent.length; k++) {
+            tabContent[k].style.display = "none";
+        }
+        var tabButtons = document.getElementsByClassName(buttonClass);
+        for (k = 0; k < tabButtons.length; k++) {
+            tabButtons[k].className = tabButtons[k].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.className += " active";
+    }
+
+    function toggleTreeMenu() {
+        var treeMenu = document.getElementById('treePanel');
+        var leftBarMenu = document.getElementById('leftBarMenu');
+        var treeButton = document.getElementById('treeSpan');
+        if (leftShowing) {
+            treeMenu.style.left = '-300px';
+            treeButton.style.backgroundColor = 'transparent';
+            leftBarMenu.style.opacity = '100';
+        }
+        else {
+            treeMenu.style.left = '80px';
+            treeButton.style.backgroundColor='var(--darker)';
+            leftBarMenu.style.opacity = '0';
+        }
+        leftShowing = !leftShowing;
+    }
+</script>
+
+
+</body></html>

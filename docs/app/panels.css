@@ -1,0 +1,514 @@
+
+input[type=range] {
+	-webkit-appearance: none;
+	background: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 1px solid var(--main);
+	height: 8px;
+	width: 8px;
+	border-radius: 4px;
+	background: var(--main);
+	margin-top: -4px;
+	cursor: pointer;
+	box-sizing: content-box;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+	box-shadow: 0 0 1px 4px rgba(100, 180, 255, .55);
+}
+
+input[type=range]:focus {
+	outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	height: 2px;
+	cursor: pointer;
+	background: var(--main);
+	border-radius: 2px;
+	margin: 4px;
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+	
+	/* Hides the slider so custom styles can be added */
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+
+
+.paddingLabel {
+	position: absolute;
+	left: 10px;
+	font-size: 8pt;
+	color: #444444;
+	text-align: right;
+	width: 40px;
+	margin-left: 10px;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+#paddingSquare {
+	display: block;
+	width: 110px;
+	height: 110px;
+	border: 2px solid var(--main);
+	box-sizing: border-box;
+	text-align: center;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 10px;
+}
+
+#paddingSquareDisplay {
+	background-color: var(--darker);
+	border: 1px dotted var(--main);
+	width: 100%;
+	height: 100%;
+}
+#fractionalSizePanel {
+	margin-top:20px;
+}
+#fractionalSizePanel div {
+	margin-bottom:20px;
+}
+#sizePanel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	top: 120px;
+	width: 100%;
+	margin: auto;
+}
+#sizePanel label {
+	color:var(--dkGray);
+	font-size: 12pt;
+}
+#sizePanel input {
+	display: inline;
+	border: 1px solid var(--dkGray);
+	outline:none;
+	color: #444444;
+	background: #fff;
+	margin: 7px;
+	padding: 4px;
+	width: 5em;
+}
+#sizePanel input:focus {
+	border:1px solid var(--main);
+	outline:none;
+}
+.slidersPanel {
+	position: absolute;
+	left: 0;
+	top: 170px;
+	width: 100%;
+}
+
+.sliderPanel {
+	padding: 4px;
+	margin: 4px;
+	display: block;
+	width: 100%;
+}
+
+.paddingSlider {
+	display: inline-block;
+	width: 180px;
+	margin-left: 24px;
+}
+
+.paddingValueLabel {
+	width: 2em;
+	text-align: right;
+	font-size: 10pt;
+	color: #444;
+	display: inline-block;
+}
+#directionPanel {
+	position:absolute;
+	left:0;
+	top:320px;
+	width:100%;
+	height:50px;
+	line-height: 50px;
+	border:1px #999 ridge;
+	background: #e4e4e4;
+	cursor: default;
+	box-sizing: border-box;
+	vertical-align: middle;
+	color: var(--dkGray);
+}
+#directionPanel:hover {
+	background: #dedede;
+	color:#000;
+}
+#directionDiv {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 200;
+}
+#arrowDiv {
+	position: absolute;
+	right:0;
+	top:0;
+	width:50px;
+	height:50px;
+}
+#directionArrow {
+	color:var(--darker);
+	display: inline-block;
+	font-size:32px;
+}
+
+.verticalRange {
+}
+
+.verticalRange::-webkit-slider-runnable-track {
+	-webkit-appearance: slider-vertical;
+	height: 100%;
+	width: 1px;
+}
+
+/* Container panel */
+.optionLabel {
+	position: absolute;
+	left: 10px;
+	font-size: 8pt;
+	color: #444;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.optionRowOne {
+	top: 46px;
+}
+
+.optionRowTwo {
+	top: 124px;
+}
+
+.optionRowThree {
+	top: 202px;
+}
+
+/*font panel */
+#fontPanel {
+	display: none;
+	padding: 16px;
+	box-sizing: border-box;
+}
+
+#fontDisplay {
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 20px;
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	vertical-align: middle;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid var(--gray);
+	font-size: 14px;
+	color: #000;
+	text-align: left;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+#fontDisplay:focus {
+	outline: none;
+	border: 1px solid var(--main);
+}
+
+/*.selectDiv {*/
+/*font-size: 10pt;*/
+/*box-shadow: 2px 2px 4px rgba(32, 32, 32, .4);*/
+/*position: absolute;*/
+/*left: 24px;*/
+/*width: 256px;*/
+/*background: url('img/menu-down.png') no-repeat 95% 50%;*/
+/*}*/
+
+/*.selectDiv select {*/
+/*padding: 10px;*/
+/*width: 130%;*/
+/*border: none;*/
+/*box-shadow: none;*/
+/*color: #333333;*/
+/*font-family: Roboto sans-serif;*/
+/*font-weight: 100;*/
+/*font-size: 10pt;*/
+/*background: transparent none;*/
+/*-webkit-appearance: none;*/
+/*}*/
+
+/*.selectDiv select:focus {*/
+/*outline: none;*/
+/*}*/
+
+#fontColor {
+	position: absolute;
+	top: 120px;
+	left: 24px;
+	right: 24px;
+	height: 120px;
+}
+#fontSliders {
+	position: absolute;
+	left: 0;
+	top: 240px;
+	width: 100%;
+}
+#iconColor {
+	position: relative;
+	margin: 10px auto;
+	height: 120px;
+}
+
+#iconChoicePanel {
+	display: block;
+	position: relative;
+	margin: 20px auto;
+	padding: 0;
+	width: 280px;
+	height: 220px;
+	border: 1px solid var(--gray);
+	background: #fff;
+	overflow-y: auto;
+}
+
+#iconChoicePanel span {
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	padding: 6px;
+	border-left: 1px solid var(--gray);
+	border-bottom: 1px solid var(--gray);
+	box-sizing: border-box;
+	cursor: default;
+}
+
+#iconChoicePanel span:hover {
+	background: var(--lighter);
+}
+
+#navItemIconPanel {
+	display: block;
+	position: relative;
+	margin: 20px auto;
+	padding: 0;
+	width: 240px;
+	height: 220px;
+	border: 1px solid var(--gray);
+	background: #fff;
+	overflow-y: auto;
+}
+
+#navItemIconPanel span {
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	padding: 6px;
+	border-left: 1px solid var(--gray);
+	border-bottom: 1px solid var(--gray);
+	box-sizing: border-box;
+	cursor: default;
+}
+
+#navItemIconPanel span:hover {
+	background: var(--lighter);
+}
+
+#navItemTitle {
+	display: inline-block;
+	position: relative;
+	width: 240px;
+	height: 34px;
+	max-lines: 1;
+	line-height: 34px;
+	vertical-align: middle;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid var(--gray);
+	font-size: 14px;
+	color: #000;
+	text-align: left;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+#navItemTitle:focus {
+	outline: none;
+	border: 1px solid var(--main);
+}
+
+#bgColor {
+	position: absolute;
+	top: 40px;
+	left: 24px;
+	right: 24px;
+	height: 120px;
+	background: none;
+}
+
+#borderRadiusDisplay {
+	position: absolute;
+	top: 200px;
+	left: 24px;
+	right: 24px;
+	height: 80px;
+	width: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(25, 120, 250, .25);
+	border: 1px solid var(--gray);
+	border-radius: 0;
+}
+
+/*color picker*/
+.color-picker {
+	margin: 0;
+	padding: 0;
+}
+
+.color-picker-hsv-gradient {
+	cursor: crosshair;
+	border: 1px solid #ddd;
+}
+
+.color-picker-hue-slider {
+	cursor: crosshair;
+	margin-left: 8px;
+	border: 1px solid #dddddd;
+}
+
+/*colors panel*/
+#colorsPanel {
+	display: none;
+}
+
+.colorRow {
+	margin: 10px 4px;
+	display: block;
+	width: 100%;
+	left: 0;
+	right: 0;
+	height: 40px;
+}
+
+.colorName {
+	float: left;
+	color: var(--dkGray);
+	font-size: 14px;
+	margin-left: 12px;
+	line-height: 32px;
+	vertical-align: middle;
+}
+
+.colorSquare {
+	float: right;
+	width: 48px;
+	height: 24px;
+	line-height: 40px;
+	vertical-align: middle;
+	border: 1px solid #aaa;
+	margin-right: 12px;
+}
+
+.themeSelectDiv {
+	display: inline;
+	font-size: 10pt;
+	box-shadow: 1px 1px 1px rgba(32, 32, 32, .4);
+	background: url('img/menu-down.png') no-repeat 95% 50%;
+	text-align: right;
+	float: right;
+	border: 1px solid #aaa;
+	width: 160px;
+}
+
+.themeSelectDiv select {
+	padding: 0;
+	border: none;
+	width: 100%;
+	height: 32px;
+	text-align-last: center;
+	box-shadow: none;
+	color: var(--dkGray);
+	font-family: Roboto, sans-serif;
+	font-weight: 100;
+	font-size: 14px;
+	background: transparent none;
+	-webkit-appearance: none;
+}
+
+.themeSelectDiv select:focus {
+	outline: none;
+}
+
+.themeFont {
+	float: right;
+	margin-right: 12px;
+	left: 80px;
+	font-size: 14px;
+}
+
+.themeFont select {
+	font-size: 14px;
+}
+
+#colorValueWindow {
+	visibility: hidden;
+	position: fixed;
+	right: 40px;
+	top: 260px;
+	padding: 10px;
+	width: 240px;
+	height: 180px;
+	background: #fff;
+	border: 1px solid #aaa;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+}
+.colorPickerWindow {
+	visibility: hidden;
+	position: fixed;
+	right: 40px;
+	top: 200px;
+	width: 180px;
+	height: 280px;
+	line-height: 180px;
+	border: 1px solid #aaa;
+	background: #fff;
+	text-align: center;
+	vertical-align: middle;
+	overflow-y: auto;
+	padding: 0;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+}
+
+.colorPickerRow {
+	width: 180px;
+	height: 32px;
+	line-height: 32px;
+	border-bottom: 1px dotted var(--dkGray);
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	cursor: default;
+	font-size: 12px;
+	color: var(--dkGray);
+}

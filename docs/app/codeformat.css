@@ -1,0 +1,21 @@
+.codeComponent {
+	color: lightgreen;
+	font-weight: bold;
+}
+
+.codeKeyword {
+	color: cyan;
+	font-weight: bold;
+}
+
+.codeReservedWord {
+	color: orange;
+	font-weight: bold;
+}
+
+.codeRegular {
+	color: yellow;
+}
+.codeComment {
+	color: #aaa;
+}
